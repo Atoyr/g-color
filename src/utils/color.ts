@@ -63,6 +63,45 @@ export function lightLevelColor(
   return overlayColor(baseColor, overlay, Math.abs(lightLevel));
 }
 
+// 関数: HEXから相対輝度を計算
+export function relativeLuminanceWithHex(color: string): number {
+  const rgb = hexToRgb(color);
+  if (rgb === null) {
+    return 0;
+  }
+  return relativeLuminance(rgb);
+}
+
+// 関数: RGBから相対輝度を計算
+export function relativeLuminance(rgb: { r: number; g: number; b: number }): number {
+  const srgb = [rgb.r, rgb.g, rgb.b].map((c) => {
+    const s = c / 255;
+    return s <= 0.03928 ? s / 12.92 : Math.pow((s + 0.055) / 1.055, 2.4);
+  });
+  return 0.2126 * srgb[0] + 0.7152 * srgb[1] + 0.0722 * srgb[2];
+}
+
+// 関数: コントラスト比を計算
+export function contrastRatio(color1: string, color2: string | null = null): number | null {
+  const rgb1 = hexToRgb(color1);
+  if (rgb1 === null) {
+    return null;
+  }
+  const lum1 = relativeLuminance(rgb1);
+
+  let c2 = color2;
+  if (c2 === null) {
+    c2 = lum1 > 0.5 ? black : white;
+  }
+  const lum2 = relativeLuminanceWithHex(c2);
+
+  const brightest = Math.max(lum1, lum2);
+  const darkest = Math.min(lum1, lum2);
+
+  return ((brightest + 0.05) / (darkest + 0.05));
+}
+
+
 // 関数：RGBとアルファ値からRGBAカラーを生成
 export function rgbaColor(hex: string, alpha: number): string | null {
   const rgb = hexToRgb(hex);

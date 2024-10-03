@@ -1,11 +1,14 @@
-<script lang="ts">
-  import ColorOverlay from './components/ColorOverlay.svelte';
+<script>
+import ColorInfoCard from './components/ColorInfoCard.svelte';
+import ColorLevelList from './components/ColorLevelList.svelte';
 </script>
 
 <main>
   <h1>カラーオーバーレイの例</h1>
-  <ColorOverlay baseColor="#ef7e20"/>
+  <ColorInfoCard baseColor="#ef7e20" />
+  <ColorLevelList baseColor="#ef7e20" />
 </main>
+
 
 <style>
   main {

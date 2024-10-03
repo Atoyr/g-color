@@ -31,11 +31,17 @@
   .color-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 4px;
+    gap: 0px;
     justify-content: center;
   }
-  
+
   .color-box {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+  
+  .color-panel {
     position: relative;
     width: 50px;
     height: 50px;
@@ -49,17 +55,31 @@
     overflow: hidden;
   }
 
+  .color-text {
+    width: 50px;
+    height: 24px;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+  }
+
 </style>
 
 <div class="color-container">
   {#each lightLevels as lightLevel}
     <div
-      class="color-box"
-      style="
-        --base-color: {lightLevelColor(baseColor, lightLevel.level)};
-      "
-    >
-      {lightLevel.name}
+      class="color-box">
+      <div
+        class="color-panel"
+        style="
+          --base-color: {lightLevelColor(baseColor, lightLevel.level)};
+        "
+      >
+      </div>
+      <div
+      class="color-text">
+        {lightLevel.name}
+      </div>
     </div>
   {/each}
 </div>
