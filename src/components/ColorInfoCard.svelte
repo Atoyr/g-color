@@ -2,6 +2,7 @@
   // 基本色とオーバーレイ色を定義
   export let baseColor: string = '#7F7F7F';
   import { contrastRatio } from '../utils/color';
+  import { IconX, IconCheck} from '@tabler/icons-svelte';
 </script>
 
 <style>
@@ -20,6 +21,7 @@
       display: flex;
       align-items: center;
       margin-bottom: 10px;
+      gap: 10px;
   }
 
   .option:last-child {
@@ -40,6 +42,13 @@
   .small-text {
       font-size: 14px;
   }
+
+  .icon {
+      width: 24px;
+      height: 24px;
+      background-color: white;
+      border-radius: 12px;
+  }
 </style>
 
 <div class="color-info-card"
@@ -48,14 +57,21 @@
   "
 >
   <div class="option">
-    <input type="checkbox" checked>
+    <div class="icon">
+      <IconCheck size={24} color={baseColor}/>
+    </div>
     <div class="large-text">大きな文字</div>
   </div>
   <div class="option">
-    <input type="radio" name="text-size">
+    <div class="icon">
+      <IconX size={24} color={baseColor}/>
+    </div>
     <div class="small-text">小さな文字</div>
   </div>
   <div class="option">
+    <div class="icon">
+      <IconX size={24} color={baseColor}/>
+    </div>
     <div class="component">UIコンポーネント</div>
   </div>
   <div class="color-code">{baseColor.toUpperCase()}</div>
