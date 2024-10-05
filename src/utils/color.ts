@@ -15,6 +15,15 @@ export function hexToRgb(hex: string): { r: number; g: number; b: number } | nul
     : null;
 }
 
+// 関数: カラーコードをRGBに変換
+export function hexToRgba(hex: string): string | null {
+  const rgb = hexToRgb(hex);
+  if (rgb === null) {
+    return null;
+  }
+  return rgbaColor(hex, 1);
+}
+
 // 関数: RGBをカラーコードに変換
 function rgbToHex(r: number, g: number, b: number): string {
   return (
