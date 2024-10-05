@@ -110,6 +110,15 @@ export function contrastRatio(color1: string, color2: string | null = null): num
   return ((brightest + 0.05) / (darkest + 0.05));
 }
 
+export function getContrastColor(hex: string): string {
+  const rgb1 = hexToRgb(hex);
+  if (rgb1 === null) {
+    return black;
+  }
+  const lum1 = relativeLuminance(rgb1);
+  return lum1 > 0.5 ? black : white;
+}
+
 
 // 関数：RGBとアルファ値からRGBAカラーを生成
 export function rgbaColor(hex: string, alpha: number): string | null {

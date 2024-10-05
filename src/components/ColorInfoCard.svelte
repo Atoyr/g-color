@@ -1,8 +1,10 @@
 <script lang="ts">
   // 基本色とオーバーレイ色を定義
-  export let baseColor: string = '#7F7F7F';
-  import { contrastRatio } from '../utils/color';
+  import { contrastRatio, relativeLuminanceWithHex, getContrastColor } from '../utils/color';
   import { IconX, IconCheck} from '@tabler/icons-svelte';
+
+  export let baseColor: string = '#7F7F7F';
+  export let color: string = getContrastColor(baseColor);
 
   const contrast = contrastRatio(baseColor) || 0;
   const isAANormalText = contrast >= 4.5;
@@ -66,6 +68,7 @@
     height: 48px;
     align-items: center;
     justify-content: center;
+    color: var(--font-color);
   }
   .large-text {
     display: flex;
@@ -73,6 +76,7 @@
     height: 48px;
     align-items: center;
     justify-content: center;
+    color: var(--font-color);
   }
   .small-text {
     display: flex;
@@ -80,6 +84,7 @@
     height: 48px;
     align-items: center;
     justify-content: center;
+    color: var(--font-color);
   }
   .ui-component {
     align-items: center;
@@ -93,7 +98,8 @@
     height: 48px;
     border-radius: 24px;
 
-    background-color: #FFFFFF;
+    background-color: var(--bg-color);
+    color: var(--base-color);
   }
   
   .content-title {
@@ -131,7 +137,7 @@
           <IconX size={24} color={baseColor}/> 
         {/if}
       </div>
-      <div class="large-text">大きな文字 Large Text</div>
+      <div class="large-text" style="--font-color: {color};">大きな文字 Large Text</div>
     </div>
     <div class="option">
       <div class="icon">
@@ -141,7 +147,7 @@
           <IconX size={24} color={baseColor}/> 
         {/if}
       </div>
-      <div class="small-text">小さな文字 Small Text</div>
+      <div class="small-text" style="--font-color: {color};">小さな文字 Small Text</div>
     </div>
     <div class="option">
       <div class="icon">
@@ -151,7 +157,7 @@
           <IconX size={24} color={baseColor}/> 
         {/if}
       </div>
-      <div class="ui-component">UIコンポーネント</div>
+      <div class="ui-component" style="--base-color: {baseColor}; --bg-color: {color};">UIコンポーネント</div>
     </div>
   </div>
   <div class="bottom-panel flex-row flex-grow-1"
@@ -166,6 +172,8 @@
     <div class="flex-column">
       <div class="content-title">カラーコード</div>
       <div class="color-code">{baseColor.toUpperCase()}</div>
+      <div class="content-title">相対輝度</div>
+      <div class="color-code">{relativeLuminanceWithHex(baseColor).toFixed(2)}</div>
     </div>
   </div>
 </div>

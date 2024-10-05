@@ -4,9 +4,14 @@ import ColorLevelList from './components/ColorLevelList.svelte';
 </script>
 
 <main>
-  <h1>カラーオーバーレイの例</h1>
-  <ColorInfoCard baseColor="#ef7e20" />
-  <ColorLevelList baseColor="#ef7e20" />
+  <div>
+    <ColorInfoCard baseColor="#ef7e20" />
+    <ColorLevelList baseColor="#ef7e20" />
+  </div>
+  <div>
+    <ColorInfoCard baseColor="#00489a" />
+    <ColorLevelList baseColor="#00489a" />
+  </div>
 </main>
 
 
