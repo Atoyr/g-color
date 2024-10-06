@@ -11,11 +11,14 @@
   const isAAANormalText = contrast >= 7;
   const isAALargeText = contrast >= 3;
   const isAAALargeText = contrast >= 4.5;
+
+  const passColor = "#319977";
+  const failColor = "#993153";
 </script>
 
 <style>
   .color-info-card {
-    width: 420px;
+    width: 720px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     justify-content: space-between;
     margin: 16px;
@@ -72,18 +75,23 @@
   }
   .large-text {
     display: flex;
+    text-align: left;
+    align-items: left;
     font-size: 24px;
     height: 48px;
+    width: 160px;
     align-items: center;
-    justify-content: center;
+    justify-content: left;
     color: var(--font-color);
   }
   .small-text {
     display: flex;
+    text-align: left;
     font-size: 14px;
     height: 48px;
+    width: 160px;
     align-items: center;
-    justify-content: center;
+    justify-content: left;
     color: var(--font-color);
   }
   .ui-component {
@@ -100,6 +108,15 @@
 
     background-color: var(--bg-color);
     color: var(--base-color);
+  }
+
+  .level-text {
+    display: flex;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 600;
+    align-items: center;
+    justify-content: left;
   }
   
   .content-title {
@@ -137,7 +154,8 @@
           <IconX size={24} color={baseColor}/> 
         {/if}
       </div>
-      <div class="large-text" style="--font-color: {color};">大きな文字 Large Text</div>
+      <div class="large-text" style="--font-color: {color};">大きな文字</div>
+      <div class="large-text" style="--font-color: {color};">Large Text</div>
     </div>
     <div class="option">
       <div class="icon">
@@ -147,7 +165,8 @@
           <IconX size={24} color={baseColor}/> 
         {/if}
       </div>
-      <div class="small-text" style="--font-color: {color};">小さな文字 Small Text</div>
+      <div class="small-text" style="--font-color: {color};">小さな文字</div>
+      <div class="small-text" style="--font-color: {color};">Small Text</div>
     </div>
     <div class="option">
       <div class="icon">
@@ -157,7 +176,8 @@
           <IconX size={24} color={baseColor}/> 
         {/if}
       </div>
-      <div class="ui-component" style="--base-color: {baseColor}; --bg-color: {color};">UIコンポーネント</div>
+      <div class="ui-component" style="--base-color: {baseColor}; --bg-color: {color};">UI コンポーネント</div>
+      <div class="ui-component" style="--base-color: {baseColor}; --bg-color: {color};">UI Component</div>
     </div>
   </div>
   <div class="bottom-panel flex-row flex-grow-1"
@@ -174,6 +194,53 @@
       <div class="color-code">{baseColor.toUpperCase()}</div>
       <div class="content-title">相対輝度</div>
       <div class="color-code">{relativeLuminanceWithHex(baseColor).toFixed(2)}</div>
+    </div>
+    <div class="flex-column">
+      <div class="content-title">大きな文字</div>
+      <div class="flex-row flex-grow-1">
+        {#if isAALargeText} 
+          <IconCheck size={24} color={passColor}/>
+        {:else}
+          <IconX size={24} color={failColor}/> 
+        {/if}
+        <div class="level-text">AA</div>
+        {#if isAAALargeText} 
+          <IconCheck size={24} color={passColor}/>
+        {:else}
+          <IconX size={24} color={failColor}/> 
+        {/if}
+        <div class="level-text">AAA</div>
+      </div>
+      <div class="content-title">小さな文字</div>
+      <div class="flex-row flex-grow-1">
+        {#if isAANormalText} 
+          <IconCheck size={24} color={passColor}/>
+        {:else}
+          <IconX size={24} color={failColor}/> 
+        {/if}
+        <div class="level-text">AA</div>
+        {#if isAAANormalText} 
+          <IconCheck size={24} color={passColor}/>
+        {:else}
+          <IconX size={24} color={failColor}/> 
+        {/if}
+        <div class="level-text">AAA</div>
+      </div>
+      <div class="content-title">UI コンポーネント</div>
+      <div class="flex-row flex-grow-1">
+        {#if isAALargeText} 
+          <IconCheck size={24} color={passColor}/>
+        {:else}
+          <IconX size={24} color={failColor}/> 
+        {/if}
+        <div class="level-text">AA</div>
+        {#if isAAALargeText} 
+          <IconCheck size={24} color={passColor}/>
+        {:else}
+          <IconX size={24} color={failColor}/> 
+        {/if}
+        <div class="level-text">AAA</div>
+      </div>
     </div>
   </div>
 </div>
