@@ -4,7 +4,7 @@ import ColorInfo from './components/ColorInfo.svelte';
 
 <main>
   <div>
-    <ColorInfo baseColor="#ef7e20" title="デスティニーオレンジ"/>
+    <ColorInfo baseColor="#ef7e20" title="デスティニーオレンジ" info=""/>
   </div>
   <div>
     <ColorInfo baseColor="#00489a" />

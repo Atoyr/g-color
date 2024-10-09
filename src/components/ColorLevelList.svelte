@@ -3,14 +3,17 @@
   import { lightLevelColor } from '../utils/color';
   // 基本色とオーバーレイ色を定義
   export let baseColor: string = '#7F7F7F';
-  // 透明度の刻み幅
-  const step: number = 10;
   
   // 透明度の配列を生成
   const lightLevels: {level: number, name: string} [] = [
+    { level: -95, name: 'D-95' },
+    { level: -90, name: 'D-90' },
     { level: -80, name: 'D-80' },
+    { level: -70, name: 'D-70' },
     { level: -60, name: 'D-60' },
+    { level: -50, name: 'D-50' },
     { level: -40, name: 'D-40' },
+    { level: -30, name: 'D-30' },
     { level: -20, name: 'D-20' },
     { level: -10, name: 'D-10' },
     { level: 0, name: '0' },
@@ -58,9 +61,9 @@
   .color-text {
     width: 50px;
     height: 24px;
+    font-size: 12px;
     justify-content: center;
     align-items: center;
-    font-size: 12px;
   }
 
 </style>
