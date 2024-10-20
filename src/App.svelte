@@ -40,6 +40,7 @@
     background-color: #fff;
     padding: 20px;
     text-align: center;
+    min-width: 1080px;
   }
 
   .header {
