@@ -5,5 +5,5 @@ export type ColorPalette = {
   title: string;
   hex: string;
   detail: string;
-  Tags: Tag[];
+  tags: Tag[];
 }
