@@ -8,7 +8,7 @@
 
   let copyStatus: HTMLElement | null = null;
 
-  function handleCopyButtonClick(event: MouseEvent) {
+  function handleCopyButtonClick(_: MouseEvent) {
     // クリップボードにテキストをコピーする
     navigator.clipboard.writeText(baseColor).then(function() {
       if(copyStatus)
