@@ -96,10 +96,6 @@
     border-color: #888;
   }
 
-  
-  h1 {
-    margin-bottom: 30px;
-  }
 </style>
 
 <main>
